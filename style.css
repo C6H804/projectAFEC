@@ -67,20 +67,10 @@ header {
     padding: 25px;
     background-color: var(--colorA);
 }
-
 .photo_profil {
-    display: flex;
-    transform: scale(1);
-    background-color: back;
-    border-radius: 100%;
-    padding: 5px;
-    background-color: var(--colorC);
+  border: solid 5px black;
+  border-radius: 100%;
 }
-
-.container_photo_profil {
-    
-}
-
 
 .logo {
     border:solid 3px black;
