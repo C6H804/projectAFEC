@@ -1,73 +1,108 @@
-.toMiddle {
-    text-align: center;
-}
-.toRight {
-    float:right;
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  /* 2. Remove default margin */
+  * {
+    margin: 0;
+  }
+  /* 3. Enable keyword animations */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      interpolate-size: allow-keywords;
+    }
+  }
+  body {
+    /* 4. Add accessible line-height */
+    line-height: 1.5;
+    /* 5. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+  }
+  /* 6. Improve media defaults */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  /* 7. Inherit fonts for form controls */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  /* 8. Avoid text overflows */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  /* 9. Improve line wrapping */
+  p {
+    text-wrap: pretty;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  /*
+    10. Create a root stacking context
+  */
+  #root, #__next {
+    isolation: isolate;
+  }
 
-}
-p {
-    text-align: justify;
-}
+  
 
-h2 {
-    font-style: italic;
+:root {
+    --colorA: #dac4a9;
+    --colorB: #ede2d4;
+    --colorC: #e2e9f3;
+    --colorD: #a9bfda;
+    --colorE: #5480c6;
 }
 
 body {
-    background-color: #b0b0b0;
+    margin:0px;
+    padding: 0px;
 }
 
-.profilePicture {
-    width: 40px;
-    height: 40px;
-    padding: 0.5%;
-    border:solid 3px black;
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px;
+    background-color: var(--colorA);
+}
+
+.photo_profil {
+    display: flex;
+    transform: scale(1);
+    background-color: back;
     border-radius: 100%;
-    background-color: white;
+    padding: 5px;
+    background-color: var(--colorC);
 }
 
-.mdButton {
-    margin-left: 5%;
-    margin-top: 20px;
-    scale: 1.5;
-    border: solid 2px black;
-    border-radius: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    transition: 0.4s;
+.container_photo_profil {
+    
 }
 
-.mdButton:hover {
-    background-color: hsl(148, 70%, 78%);
-    border-style: dotted;
+
+.logo {
+    border:solid 3px black;
+    border-radius: 30px;
 }
-hr {
-    border: none;
-    border-top: 3px double #333;
-    color: #333;
-    overflow: visible;
+
+.text-center {
     text-align: center;
-    height: 5px;
 }
 
-.buttonMidle {
-    display: block;
-    margin: 0 auto;
+.depense {
+    background-color: var(--colorA);
+    width: fit-content;
+    margin:25px;
+    border-radius: 36px;
 }
-
-.lgButton {
-    scale: 2;
-    background-color: #DAC4A9;
-    border: solid 2px black;
-    border-radius: 50px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    transition: 0.5s;
+.image_depense {
+    margin-left: 15px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    border-radius: 100%;
 }
-.lgButton:hover {
-    background-color: #ede2D4;
+.nom_depense {
+    margin-left: 10px;
 }
