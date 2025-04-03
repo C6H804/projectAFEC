@@ -1,98 +1,156 @@
 /* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
-    box-sizing: border-box;
-  }
-  /* 2. Remove default margin */
-  * {
-    margin: 0;
-  }
-  /* 3. Enable keyword animations */
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      interpolate-size: allow-keywords;
-    }
-  }
-  body {
-    /* 4. Add accessible line-height */
-    line-height: 1.5;
-    /* 5. Improve text rendering */
-    -webkit-font-smoothing: antialiased;
-  }
-  /* 6. Improve media defaults */
-  img, picture, video, canvas, svg {
-    display: block;
-    max-width: 100%;
-  }
-  /* 7. Inherit fonts for form controls */
-  input, button, textarea, select {
-    font: inherit;
-  }
-  /* 8. Avoid text overflows */
-  p, h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
-  }
-  /* 9. Improve line wrapping */
-  p {
-    text-wrap: pretty;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    text-wrap: balance;
-  }
-  /*
-    10. Create a root stacking context
-  */
-  #root, #__next {
-    isolation: isolate;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-  
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
 
-:root {
-    --colorA: #dac4a9;
-    --colorB: #ede2d4;
-    --colorC: #e2e9f3;
-    --colorD: #a9bfda;
-    --colorE: #5480c6;
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
 }
 
 body {
-    margin:0px;
-    padding: 0px;
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+    10. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+
+
+:root {
+  --colorA: #dac4a9;
+  --colorB: #ede2d4;
+  --colorC: #e2e9f3;
+  --colorD: #a9bfda;
+  --colorE: #5480c6;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
 }
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 25px;
-    background-color: var(--colorA);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 25px;
+  background-color: var(--colorA);
 }
+
 .photo_profil {
   border: solid 5px black;
   border-radius: 100%;
 }
 
 .logo {
-    border:solid 3px black;
-    border-radius: 30px;
+  border: solid 3px black;
+  border-radius: 30px;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
+}
+
+.depense_container {
+  display: flex;
 }
 
 .depense {
-    background-color: var(--colorA);
-    width: fit-content;
-    margin:25px;
-    border-radius: 36px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: var(--colorA);
+  padding:10px;
+  margin: 25px;
+  border-radius: 36px;
 }
+
 .image_depense {
-    margin-left: 15px;
-    margin-top: 9px;
-    margin-bottom: 9px;
-    border-radius: 100%;
+  display: flex;
+  justify-content: flex-start;
+  order: -1;
 }
+
+
+.image_depense >img {
+  border-radius: 100%;
+}
+
+
 .nom_depense {
-    margin-left: 10px;
+  order: 0;
+  width: 160px;
+
+}
+
+.date_depense {
+  order: 1;
+  width: 60px;
+}
+
+.prix_total_depense {
+  order: 2;
 }
