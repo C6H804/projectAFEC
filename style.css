@@ -114,43 +114,42 @@ header {
 
 .depense_container {
   display: flex;
+  flex-direction: column;
 }
 
 .depense {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-
   background-color: var(--colorA);
-  padding:10px;
-  margin: 25px;
+  display: grid;
+  grid-template-columns: 48px 1fr auto 60px;
+  gap: 2vw;
+
+
+  padding: 10px;
+  margin: 12px 1vw 12px 1vw;
   border-radius: 36px;
 }
 
 .image_depense {
-  display: flex;
-  justify-content: flex-start;
-  order: -1;
+  align-self: center;
 }
 
-
-.image_depense >img {
+.image_depense>img {
   border-radius: 100%;
+  border: 1px solid black;
 }
 
 
 .nom_depense {
-  order: 0;
-  width: 160px;
-
+  align-self: center;
+  justify-self: start;
 }
 
 .date_depense {
-  order: 1;
-  width: 60px;
+  align-self: center;
+  justify-self: center;
 }
 
 .prix_total_depense {
-  order: 2;
+  justify-self: end;
+  align-self: center;
 }
