@@ -1,0 +1,19 @@
+header {
+    background-color: $colorA;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px;
+}
+
+header > .logo {
+    border: solid 3px black;
+    border-radius: calc($tailleHeightLogo / 2);
+}
+
+header > .photo-profil {
+    border: solid 5px black;
+    border-radius: 100%;
+    background-color: $colorC;
+}
