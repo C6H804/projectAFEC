@@ -6,27 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dist/css/style.css">
     <title>Projet AFEC</title>
-    <script src=""></script>
+    <script src="dist/js/fonctionDepense.js"></script>
 </head>
 
-<body>
+<body onload="init()">
     <header>
         <img class="logo" src="images/logo.png" alt="logo de l'aplication" width="112" height="64">
         <img class="photo-profil bouton_user" src="images/default_user_profile_picture.jpg" alt="photo de profil" width="64" height="64">
     </header>
     <nav>
-        <h1 class="text-center">Mes dernières dépenses dépenses</h1>
-        <hr>
+        <!-- <img src="icons/arrow-turn-down-left.svg" alt="fleche de retour" width="24" height="24" class="button-back"> -->
+        <h1 class="text-center">Mes dernières dépenses</h1>
+        <!-- <span></span> -->
     </nav>
+    <hr>
     <main>
-        <article class="depenses_container">
-            <div class="depense">
-                <div class="image_depense"><img src="images/pates.jpg" alt="image de la depense" width="48" height="48"></div>
-                <div class="nom_depense"><strong>Boulangerie</strong></div>
-                <div class="date_depense"><i>31/02/25</i></div>
-                <div class="prix_total_depense"><strong>5,67€</strong></div>
+        <article class="depenses_container" id="depenses_container">
+            <!-- <div class="depense">
+                <img src="images/pates.jpg" alt="image de la depense" width="48" height="48" class="image-depense">
+                <strong>Essence</strong>
+                <i class="mobile">31/04/25</i>
+                <i class="desktop">Dimanche 29 Décembre à 18h25</i>
+                <strong>102,67€</strong>
+                <img src="icons/angle-small-down.svg" alt="flèche vers le bas pour déplier" width="38" height="38" class="desktop">
             </div>
-
+            <div class="depense">
+                <img src="images/pates.jpg" alt="image de la depense" width="48" height="48" class="image-depense">
+                <strong>Cadeau d'anniversaire commun à bernard de la compta</strong>
+                <i class="mobile">02/06/25</i>
+                <i class="desktop">jeudi 1 Mai à 18h25</i>
+                <strong>102,67€</strong>
+                <img src="icons/angle-small-down.svg" alt="flèche vers le bas pour déplier" width="38" height="38" class="desktop">
+            </div> -->
         </article>
     </main>
 <aside>
@@ -38,7 +49,6 @@
         <b>Total = 0,00€</b>
         <button class="buttonMidle lgButton">Ajouter un produit</button>
     </footer>
-
 </body>
 
 </html>

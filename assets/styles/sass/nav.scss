@@ -1,0 +1,28 @@
+$tailleFleche: 40px;
+
+nav {
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+nav>span {
+    width: $tailleFleche;
+    height: $tailleFleche;
+}
+
+nav>h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+@media screen and (max-width: 450px) {
+    nav>h1 {
+        font-size: 1.3rem;
+    }
+}
