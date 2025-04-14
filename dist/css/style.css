@@ -56,6 +56,30 @@ table {
   border-spacing: 0;
 }
 
+.container-btn {
+  display: flex;
+  justify-self: center;
+}
+
+.btn {
+  padding: 1.5em;
+  border: solid 2px black;
+  border-radius: 0.75em;
+}
+
+.btn-blue {
+  background-color: #5480c6;
+  color: white;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn-blue:hover {
+  background-color: #a9bfda;
+  color: black;
+  transform: scale(1.05);
+}
+
 header {
   background-color: #dac4a9;
   display: flex;
@@ -106,8 +130,7 @@ nav > h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  padding: 0 10px;
+  margin: 1em;
   overflow: scroll;
 }
 
@@ -115,13 +138,13 @@ nav > h1 {
   min-width: 333px;
   background-color: #dac4a9;
   margin: 25px;
-  padding-left: 8px;
   border-radius: 66px;
   max-height: 153px;
   display: grid;
   gap: 10px;
   align-items: center;
   overflow: hidden;
+  padding: 8px;
 }
 
 .depense > .image-depense {
@@ -131,10 +154,13 @@ nav > h1 {
 
 .depense > strong {
   max-height: 35px;
-  min-width: 120px;
   font-weight: bold;
   font-size: 1.2em;
   text-overflow: ellipsis;
+}
+
+.depense > strong:last-of-type {
+  text-align: end;
 }
 
 .depense > i {
@@ -166,7 +192,6 @@ i.desktop {
   }
   .depense {
     grid-template-columns: 48px 1fr 155px 72px 48px;
-    padding: 8px;
   }
 }
 

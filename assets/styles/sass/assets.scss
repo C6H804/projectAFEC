@@ -1,0 +1,22 @@
+.container-btn {
+    display: flex;
+    justify-self: center;
+}
+.btn {
+    padding: 1.5em;
+    border: solid 2px black;
+    border-radius: 0.75em;
+}
+
+.btn-blue {
+    background-color: $colorE;
+    color: white;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-blue:hover {
+    background-color: $colorD;
+    color: black;
+    transform: scale(1.05);
+}

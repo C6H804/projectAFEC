@@ -48,7 +48,7 @@ function ajouterDepense(parent,id,srcImage,nomDepense, dateShort, dateLong, ammo
     ammountDepense.innerText = ammount;
     
     let fleche = document.createElement("img");
-    fleche.src = "icons/angle-small-down.svg";
+    fleche.src = "icons/chevron-down.svg";
     fleche.alt = "fleche depense";
     fleche.className = "desktop";
     fleche.width = "48";
