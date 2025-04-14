@@ -56,7 +56,7 @@ table {
   border-spacing: 0;
 }
 
-.container-btn {
+.container-center {
   display: flex;
   justify-self: center;
 }
@@ -193,6 +193,16 @@ i.desktop {
   .depense {
     grid-template-columns: 48px 1fr 155px 72px 48px;
   }
+}
+img.charts {
+  margin: 1em;
+  width: 80vw;
+  height: auto;
+}
+
+footer > .container-btn-ajout {
+  position: sticky;
+  bottom: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
