@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="dist/css/theme.css">
     <title>Projet AFEC</title>
     <script src="dist/js/fonctionDepense.js"></script>
 </head>
@@ -12,7 +12,8 @@
 <body onload="init()">
     <header>
         <img class="logo" src="images/logo.png" alt="logo de l'aplication" width="112" height="64">
-        <img class="photo-profil bouton_user" src="images/default_user_profile_picture.jpg" alt="photo de profil" width="64" height="64">
+        <img class="photo-profil bouton_user" src="images/default_user_profile_picture.jpg" alt="photo de profil"
+            width="64" height="64">
     </header>
     <nav>
         <!-- <img src="icons/arrow-turn-down-left.svg" alt="fleche de retour" width="24" height="24" class="button-back"> -->
@@ -21,14 +22,44 @@
     </nav>
     <hr>
     <main>
-        <article class="depenses_container" id="depenses_container"></article>        
-        <div class="container-center"><button class="btn btn-blue" onclick="window.location.href='gestionDepenses.html'">Gérer mes dépenses</button></div>
+        <article class="depenses_container" id="depenses_container">
+            <div class="depense" id="depense0">
+                <div class="depenseTete" id="tete0">
+                    <img src="images/pates.jpg" alt="image depense" class="image-depense" width="48" height="48">
+                    <strong class="nom-depense">Règlement de la facture d’électricité du mois</strong>
+                    <i class="mobile">05/04/25</i><i class="date desktop">Samedi 5Novembre à&nbsp;12h15</i>
+                    <strong class="ammount-depense">881,75€</strong>
+                    <img src="icons/chevron-down.svg" alt="fleche de déroulement pour voir les détails de la dépense"
+                        class="desktop fleche-depense" width="48" height="48">
+                </div>
+                <div class="depenseCorps">
+                    <div class="depenseCorpsTete">
+                        <div class="nbrProduitsTete bold underline">800 produits</div>
+                        <div class="nomProduitTete italic desktop">Nom du produit</div>
+                        <div class="prixProduitUnitTete italic desktop">Prix du produit</div>
+                        <div class="quantiteProduitTete italic desktop">Quantité</div>
+                        <div class="prixTotalTete italic desktop">Prix total</div>
+                    </div>
+                    <div class="listProduit">
+                        <div class="produit" id="produit0">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <div class="container-center"><button class="btn btn-blue"
+                onclick="window.location.href='gestionDepenses.html'">Gérer mes dépenses</button></div>
         <article class="charts-container container-center">
             <img src="images/templateChart.jpg" alt="graphiques de la semaine" class="charts">
         </article>
     </main>
-    <footer>
-        <div class="container-btn-ajout container-center"><button class="btn">zdçiuhzjqidujziqu</button></div>
+    <footer class="footer">
+        <div class="footer__content">
+            <button
+            onclick="window.location.href='ajoutDepense.html'" class="btn" id="ajoutDepenseBtnM">+</button>
+            <label for="ajoutDepenseBtnM">Ajouter une dépense</label>
+        </div>
     </footer>
 </body>
 

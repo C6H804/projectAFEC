@@ -9,8 +9,8 @@ const purgecss = require('@fullhuman/postcss-purgecss')
 
 let config = {
   entry: {
-    theme: ['./assets/scripts/base.js', './assets/styles/base.scss'],
-    // error: ['./scss/pages/error.scss'],
+    theme: ['./assets/scripts/base.js', './assets/styles/sass/style.scss'],
+    
   },
   output: {
     path: path.resolve(__dirname, 'dist/js'),

@@ -1,0 +1,44 @@
+
+// Depense component styles
+.c-depense {
+    &_header {
+  
+    }
+  
+    &_body {
+
+      &_top {
+  
+      }
+  
+      &_bottom {
+  
+      }
+    }
+
+    // override
+
+    &.-db {
+        .c-depense_header {
+        
+        }
+    }
+}
+  
+  /*
+  
+    <div class="c-depense -db">
+      <div class="c-depense_header">
+      
+      </div>
+      <div class="c-depense_body">
+        <div class="c-depense_body_top">
+  
+        </div>
+        <div class="c-depense_body_bottom">
+        
+        </div>
+      </div>
+    </div>
+  
+  */

@@ -1,4 +1,33 @@
-footer>.container-btn-ajout {
-    position: sticky;
+// footer>.container-btn-ajout {
+//     position: fixed;
+//     bottom: 0;
+
+// }
+// #ajoutDepenseBtnM {
+//     font-size: 3em;
+//     padding: 0px;
+//     margin: 0px;
+// }
+
+
+/* Laurent */
+
+.footer {
     bottom: 0;
+    position: sticky;
+    padding: 0 0 20px 0;
+
+    &__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        
+        //footer__content__label
+        &__label {
+            display: block;
+        }
+    }
+
 }

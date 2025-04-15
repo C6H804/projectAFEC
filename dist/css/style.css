@@ -80,6 +80,18 @@ table {
   transform: scale(1.05);
 }
 
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
 header {
   background-color: #dac4a9;
   display: flex;
@@ -125,6 +137,9 @@ nav > h1 {
     font-size: 1.3rem;
   }
 }
+
+
+
 .depense-container {
   display: flex;
   flex-direction: column;
@@ -134,11 +149,24 @@ nav > h1 {
   overflow: scroll;
 }
 
+.depenseCorps {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  text-align: center;
+}
+
 .depense {
+  margin: 25px;
+  background-color: #e2e9f3;
+  border-radius: 33px;
+  padding-bottom: 25px;
+}
+
+.depenseTete {
   min-width: 333px;
   background-color: #dac4a9;
-  margin: 25px;
-  border-radius: 66px;
+  border-radius: 33px;
   max-height: 153px;
   display: grid;
   gap: 10px;
@@ -147,29 +175,38 @@ nav > h1 {
   padding: 8px;
 }
 
-.depense > .image-depense {
+.depenseTete > .image-depense {
   border: 1px solid black;
   border-radius: 100%;
 }
 
-.depense > strong {
+.depenseTete > strong {
   max-height: 35px;
   font-weight: bold;
   font-size: 1.2em;
   text-overflow: ellipsis;
 }
 
-.depense > strong:last-of-type {
+.ammount-depense {
   text-align: end;
 }
 
-.depense > i {
+.depenseTete > i {
   font-style: italic;
 }
 
 i.desktop {
   text-align: center;
   max-width: 140px;
+}
+
+.depenseCorps {
+  display: flex;
+  flex-direction: column;
+}
+
+.depenseCorpsTete {
+  display: grid;
 }
 
 @media screen and (max-width: 720px) {
@@ -179,7 +216,7 @@ i.desktop {
   .mobile {
     display: block;
   }
-  .depense {
+  .depenseTete {
     grid-template-columns: 48px 1fr auto 72px;
   }
 }
@@ -190,8 +227,12 @@ i.desktop {
   .desktop {
     display: block;
   }
-  .depense {
+  .depenseTete {
     grid-template-columns: 48px 1fr 155px 72px 48px;
+  }
+  .depenseCorpsTete {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
 img.charts {
@@ -201,8 +242,14 @@ img.charts {
 }
 
 footer > .container-btn-ajout {
-  position: sticky;
+  position: fixed;
   bottom: 0;
+}
+
+#ajoutDepenseBtnM {
+  font-size: 3em;
+  padding: 0px;
+  margin: 0px;
 }
 
 /*# sourceMappingURL=style.css.map */
