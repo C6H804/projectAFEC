@@ -1,0 +1,32 @@
+.produit {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    @media (max-width:$desktopLimitSize) {
+        grid-template-columns: 1fr 4fr;
+        gap: 1em;
+        justify-items: center;
+    }
+}
+
+.imageProduit {
+    width: 38px;
+    height: 38px;
+    border-radius: 100%;
+    border: 2px solid black;
+    @media (max-width:$desktopLimitSize) {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+.trash {
+    width: 48px;
+    height: 48px;
+}
+
+.text-mobile {
+    text-align: start;
+    justify-self: start;
+}

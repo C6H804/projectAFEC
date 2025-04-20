@@ -31,3 +31,30 @@
 .underline {
     text-decoration: underline;
 }
+
+@media (min-width:$desktopLimitSize) {
+    .desktop {
+        display: block;
+    }
+    .mobile {
+        display: none;
+    }
+}
+
+@media (max-width:$desktopLimitSize) {
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
+}
+
+@media (max-width:$smallphoneLimitSize) {
+    .large-mobile {
+        display: none;
+    }
+    .small-mobile {
+        display: block;
+    }
+}

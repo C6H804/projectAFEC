@@ -1,44 +1,59 @@
+.c-depense-db {
+  margin: 25px;
+  background-color: $colorC;
+  border-radius: 33px;
 
-// Depense component styles
-.c-depense {
-    &_header {
-  
+
+  &_header {
+    // min-width: 333px;
+    background-color: $colorA;
+    border-radius: 33px;
+    max-height: 153px;
+
+    display: grid;
+    gap: 10px;
+    align-items: center;
+    overflow: hidden;
+    padding: 8px;
+    grid-template-columns: 48px 1fr auto 72px;
+
+    @media (min-width: $desktopLimitSize) {
+      grid-template-columns: 48px 1fr 155px 72px 48px;
     }
-  
-    &_body {
+    @media (max-width: $smallphoneLimitSize) {
+      grid-template-columns: 48px auto 1fr;
+    }
+  }
 
-      &_top {
-  
+  &_body {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    text-align: center;
+
+    &_top {
+      display: grid;
+      gap: 5px;
+      grid-template-columns: repeat(5, 1fr);
+      margin-bottom: 1em;
+      @media (max-width: $desktopLimitSize) {
+        grid-template-columns: 1fr;
       }
-  
-      &_bottom {
-  
-      }
     }
 
-    // override
-
-    &.-db {
-        .c-depense_header {
-        
-        }
+    &_middle {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      justify-content: center;
     }
+
+    &_bottom {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 1em;
+    }
+  }
 }
-  
-  /*
-  
-    <div class="c-depense -db">
-      <div class="c-depense_header">
-      
-      </div>
-      <div class="c-depense_body">
-        <div class="c-depense_body_top">
-  
-        </div>
-        <div class="c-depense_body_bottom">
-        
-        </div>
-      </div>
-    </div>
-  
-  */
