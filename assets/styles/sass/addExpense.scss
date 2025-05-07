@@ -1,0 +1,19 @@
+.container-addExpense {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nameAddExpense {
+    width: 90%;
+}
+
+.nameAddExpense > input{
+    border: none;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    width: 100%;
+    height: 2em;
+}

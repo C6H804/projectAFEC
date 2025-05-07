@@ -1,9 +1,8 @@
 .c-depense-db {
+  overflow: hidden;
   margin: 25px;
   background-color: $colorC;
   border-radius: 33px;
-
-
   &_header {
     // min-width: 333px;
     background-color: $colorA;
@@ -31,11 +30,14 @@
     margin: 1em;
     text-align: center;
 
+
     &_top {
       display: grid;
       gap: 5px;
       grid-template-columns: repeat(5, 1fr);
       margin-bottom: 1em;
+      align-items: center;
+      justify-items: center;  
       @media (max-width: $desktopLimitSize) {
         grid-template-columns: 1fr;
       }

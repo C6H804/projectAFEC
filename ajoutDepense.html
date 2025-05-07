@@ -4,24 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="dist/css/theme.css">
     <title>Ajout d'une dépense</title>
     <script src="dist/js/fonctionDepense.js"></script>
 </head>
 
 <body>
     <header>
-        <a href="index.html"><img class="logo" src="images/logo.png" alt="logo de l'aplication" width="112" height="64"></a>
-        <img class="photo-profil bouton_user" src="images/default_user_profile_picture.jpg" alt="photo de profil"
-            width="64" height="64">
+        <div class="container-header container-logo"><img class="logo" src="images/logo.png" alt="logo de l'aplication"
+                width="112" height="64"></div>
+        </div>
+        <div class="container-header container-photo-profil">
+            <img class="photo-profil bouton_user" src="images/default_user_profile_picture.jpg" alt="photo de profil"
+                width="64" height="64">
+        </div>
     </header>
     <nav>
-        <img src="icons/arrow-turn-down-left.svg" alt="fleche de retour" width="24" height="24" class="button-back">
+        <a href="index.html"><img src="icons/arrow-turn-down-left.svg" alt="fleche de retour" width="24" height="24"
+                class="button-back"></a>
         <h1 class="text-center">Ajout d'une dépense</h1>
         <span></span>
     </nav>
     <hr>
     <main>
+        <div class="container-addExpense">
+            <div class="nameAddExpense"><input type="text" value="Nom de la dépense"></div>
+            <div class="c-addExpense-product">
+                <div class="c-addExpense-product_img"><img src="images/pates.jpg" width="68" height="68" alt=""></div>
+                <div class="c-addExpense-product_mainRow">
+                    <div class="c-addExpense-product_mainRow_name"><input type="text" class="expenseProductInput"></div>
+                    <div class="c-addExpense-product_mainRow_price"><input type="number" class="expenseProductInput"></div>
+                    <div class="c-addExpense-product_mainRow_ammount"><input type="number" class="expenseProductInput"></div>
+                </div>
+                <div class="c-addExpense-product_trash"><img src="icons/trash-xmark.svg" alt="" width="68" height="68"></div>
+            </div>
+        </div>
 
     </main>
     <footer>

@@ -1,0 +1,27 @@
+.c-addExpense-product {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    border: solid 1px black;
+    &_mainRow {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        &_name {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+        }
+        
+        &_price {
+            width: 50%;
+        }
+    }
+}
+
+.expenseProductInput {
+    width: 100%;
+    height: 2em;
+}

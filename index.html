@@ -6,107 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dist/css/theme.css">
     <title>Projet AFEC</title>
-    <script src="dist/js/fonctionDepense.js"></script>
 </head>
 
-<body onload="init()">
+<body>
     <header>
-        <img class="logo" src="images/logo.png" alt="logo de l'aplication" width="112" height="64">
-        <img class="photo-profil bouton_user" src="images/default_user_profile_picture.jpg" alt="photo de profil"
-            width="64" height="64">
+        <div class="container-header container-logo"><img class="logo" src="images/logo.png" alt="logo de l'aplication" width="112" height="64"></div>
+        <div class="container-header-btn">
+            <button>Ajouter une nouvelle dépense</button>
+            <button>Gérer mes dépenses</button>
+        </div>
+        <div class="container-header container-photo-profil">
+            <img class="photo-profil bouton_user" src="images/default_user_profile_picture.jpg" alt="photo de profil"
+                width="64" height="64">
+        </div>
+        <script type="module" src="assets/scripts/_FonctionCreateElement.js"></script>
     </header>
     <nav>
         <!-- <img src="icons/arrow-turn-down-left.svg" alt="fleche de retour" width="24" height="24" class="button-back"> -->
         <h1 class="text-center">Mes dernières dépenses</h1>
         <!-- <span></span> -->
+        <hr>
     </nav>
-    <hr>
     <main>
         <article class="depenses_container-db" id="depenses_container-db">
-            <div class="c-depense-db" id="c-depense0">
-                <div class="c-depense-db_header">
-                    <img class="image-depense" src="images/pates.jpg" alt="image depense"
-                        width="48" height="48">
-                        <strong class="nom-depense">Pleins de carburant pour la voiture</strong>
-                        <i class="mobile">10/06/25</i>
-                        <i class="date desktop">Jeudi 10 Juin à&nbsp;08h45</i>
-                        <strong class="ammount-depense">522,30€</strong><img src="icons/chevron-down.svg" alt="fleche de déroulement pour voir les détails de la dépense" class="desktop fleche-depense" width="48" height="48">
-                </div>
-                <div class="c-depense-db_body">
-                    <div class="c-depense-db_body_top">
-                        <div class="nbrProduitsTete bold underline">800 produits</div>
-                        <div class="nomProduitTete italic desktop">Nom du produit</div>
-                        <div class="prixProduitUnitTete italic desktop">Prix du produit</div>
-                        <div class="quantiteProduitTete italic desktop">Quantité</div>
-                        <div class="prixTotalTete italic desktop">Prix total</div>
-                    </div>
-                    <div class="c-depense-db_body_middle">
-                        <div class="produit">
-                            <img src="images/pates.jpg" alt="" class="imageProduit">
-                            <div class="text-mobile mobile">
-                                2  - Oeufs - à 4,00€</br>Total à 8,00€
-                            </div>
-                            <div class="desktop nomProduit bold">Sachet de pâtes</div>
-                            <div class="desktop prixUnite">5,90€</div>
-                            <div class="desktop quantiteProduit">2</div>
-                            <div class="desktop prixTotal bold">11,80€</div>
-                        </div>
-                        <div class="produit">
-                            <img src="images/pates.jpg" alt="" class="imageProduit">
-                            <div class="text-mobile mobile">
-                                <div>   <span>2  - </span>  <span class="bold">Oeufs</span>  <span> - à 4,00</span>  </div>
-                                <div>   <span class="bold">Total à 8,00€</span>  </div>
-                            </div>
-                            <div class="desktop nomProduit bold">zdiudnznq idnz </div>
-                            <div class="desktop prixUnite">5,90€</div>
-                            <div class="desktop quantiteProduit">2</div>
-                            <div class="desktop prixTotal bold">11,80€</div>
-                        </div>
-                        <div class="produit">
-                            <img src="images/pates.jpg" alt="" class="imageProduit">
-                            <div class="text-mobile mobile">
-                                2  - Oeufs - à 4,00€</br>Total à 8,00€
-                            </div>
-                            <div class="nomProduit bold desktop">Sachet de pâtes</div>
-                            <div class="prixUnite desktop">5,90€</div>
-                            <div class="quantiteProduit desktop">2</div>
-                            <div class="prixTotal bold desktop">11,80€</div>
-                        </div>
-
-                        
-                    </div>
-                    <div class="c-depense-db_body_bottom">
-                        <img src="icons/trash-xmark.svg" id="trash depense 0" alt="Icone de poubelle" class="trash" width="48" height="48">
-                        <label for="trashdepense0">Supprimer dépense</label>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- <div class="depense" id="depense0">
-                <div class="depenseTete" id="tete0">
-                    <img src="images/pates.jpg" alt="image depense" class="image-depense" width="48" height="48">
-                    <strong class="nom-depense">Règlement de la facture d’électricité du mois</strong>
-                    <i class="mobile">05/04/25</i><i class="date desktop">Samedi 5Novembre à&nbsp;12h15</i>
-                    <strong class="ammount-depense">881,75€</strong>
-                    <img src="icons/chevron-down.svg" alt="fleche de déroulement pour voir les détails de la dépense"
-                        class="desktop fleche-depense" width="48" height="48">
-                </div>
-                <div class="depenseCorps">
-                    <div class="depenseCorpsTete">
-                        <div class="nbrProduitsTete bold underline">800 produits</div>
-                        <div class="nomProduitTete italic desktop">Nom du produit</div>
-                        <div class="prixProduitUnitTete italic desktop">Prix du produit</div>
-                        <div class="quantiteProduitTete italic desktop">Quantité</div>
-                        <div class="prixTotalTete italic desktop">Prix total</div>
-                    </div>
-                    <div class="listProduit">
-                        <div class="produit" id="produit0">
-
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+            
         </article>
         <div class="container-center"><button class="btn btn-blue"
                 onclick="window.location.href='gestionDepenses.html'">Gérer mes dépenses</button></div>
@@ -116,10 +39,40 @@
     </main>
     <footer class="footer">
         <div class="footer__content">
-            <button onclick="window.location.href='ajoutDepense.html'" class="btn" id="ajoutDepenseBtnM">+</button>
+            <button onclick="window.location.href='ajoutDepense.html'" class="btn" id="ajoutDepenseBtnM"><img src="icons/plus-svgrepo-com.svg" alt="" width="32" height="32"></button>
             <label for="ajoutDepenseBtnM">Ajouter une dépense</label>
         </div>
     </footer>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <script type="module" src="dist/js/fonctionDepense.js"></script>
 </body>
 
 </html>
