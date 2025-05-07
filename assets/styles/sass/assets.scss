@@ -7,6 +7,22 @@
     border: solid 2px black;
     border-radius: 0.75em;
 }
+.btn-header {
+    background-color: $colorE;
+    color: white;
+    font-weight: bold;
+    transition: 0.2s;
+    min-width: 125px;
+    height: 4.5em;
+    border-radius: 0.75em;
+}
+
+.btn-header:hover {
+    background-color: $colorD;
+    color: black;
+    transform: scale(1.05);
+}
+
 
 .btn-blue {
     background-color: $colorE;

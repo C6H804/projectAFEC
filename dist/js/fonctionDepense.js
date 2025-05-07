@@ -102,7 +102,7 @@ let dataSetTest = [
 function init() {
     console.log("init depense.js");
     // essayer le plus possible d'utiliser des noms de variables, fonctions et autres en anglais exemple : dépense -> expense, produit -> product, etc...
-    loadExpense(6, document.getElementById("depenses_container-db"));
+    loadExpense(3, document.getElementById("depenses_container-db"));
 }
 
 
@@ -124,8 +124,8 @@ function addExpense(parent, id) {
     let expenseData = getExpenseValues(id);
     let expense = createElement("div", { class: "c-depense-db", id: "depense" + id });
 
-
-    let expenseHeader = createElement("div", { class: "c-depense-db_header" });
+    let expenseHeader = createElement("div", { class: "c-depense-db_header", id: "header" + id });
+    expenseHeader.onclick = function () { unfoldDb(id, true) };
 
 
 
@@ -139,7 +139,7 @@ function addExpense(parent, id) {
     let ammount = createElement("div", { class: "ammount-depense bold" });
     ammount.innerHTML = expenseData[5];
     let fleche = createElement("img", { src: "icons/chevron-up.svg", alt: "fleche de déroulement pour voir les détails de la dépense", class: "desktop fleche-depense", width: 48, height: 48, id: "fleche" + id });
-    fleche.onclick = function () { unfoldDb(id) };
+    fleche.onclick = function () { unfoldDb(id, false) };
 
     expenseHeader.appendChild(image);
     expenseHeader.appendChild(name);
@@ -193,12 +193,15 @@ function getDate(date, short) {
     return result;
 }
 
-
-
-
-function unfoldDb(id) {
+function unfoldDb(id, mobile) {
+    if (mobile && window.innerWidth > 720) {
+        return;
+    }
+    let header = document.getElementById("header" + id);
+    header.onclick = function () { useless() };
     let arrow = document.getElementById("fleche" + id);
     arrow.onclick = function () { useless() };
+
 
     // créer squelette 
     parent = document.getElementById("depense" + id);
@@ -207,7 +210,7 @@ function unfoldDb(id) {
 
     let body = createElement("div", { class: "c-depense-db_body", id: "body" + id });
     let top = createElement("div", { class: "c-depense-db_body_top" });
-    let middle = createElement("div", { class: "c-depense-db_body_middle" });
+    let middle = createElement("div", { class: "c-depense-db_body_middle", id: "middle" + id });
     let bottom = createElement("div", { class: "c-depense-db_body_bottom" });
 
     // récupérer données
@@ -225,8 +228,8 @@ function unfoldDb(id) {
     dataProducts.forEach((element, index) => {
         setTimeout(() => {
             addProduct(id, element, middle);
-           // (-1/2)*x^2 + 50x
-        },Math.max(0, (-1/2)*Math.pow(index, 2) + 50*index));
+            // (-1/2)*x^2 + 50x
+        }, Math.max(0, (-1 / 2) * Math.pow(index, 2) + 50 * index));
     });
 
     let trash = createElement("img", { src: "icons/trash-xmark.svg", id: "trashDepense0", alt: "Icone de poubelle", class: "trash", width: 48, height: 48 });
@@ -237,7 +240,8 @@ function unfoldDb(id) {
 
 
     arrow.src = "icons/chevron-down.svg";
-    arrow.onclick = function () { refoldDb(id) };
+    arrow.onclick = function () { refoldDb(id, false) };
+    header.onclick = function () { refoldDb(id, true) };
 }
 
 
@@ -308,15 +312,34 @@ function getProductData(id) {
     return dataSetTest[1][id];
 }
 
-function refoldDb(id) {
-    let expense = document.getElementById("depense" + id);
+function refoldDb(id, mobile) {
+    if (mobile && window.innerWidth > 720) {
+        return;
+    }
+    let header = document.getElementById("header" + id);
 
     let arrow = document.getElementById("fleche" + id);
     arrow.onclick = function () { useless() };
+    header.onclick = function () { useless() };
 
-    document.getElementById("body" + id).remove();
-    arrow.src = "icons/chevron-up.svg";
-    arrow.onclick = function () { unfoldDb(id) };
+    let body = document.querySelector("#middle" + id);
+    // let body = document.getElementById("middle" + id);
+    console.log(body);
+    let products = body.querySelectorAll(".produit");
+
+    for (let i = 0; i < products.length; i++) {
+        setTimeout(() => {
+            body.removeChild(body.lastChild);
+            if (i == products.length - 1) {
+                document.getElementById("body" + id).remove();
+                arrow.src = "icons/chevron-up.svg";
+                arrow.onclick = function () { unfoldDb(id, false) };
+                header.onclick = function () { unfoldDb(id, true) };
+            }
+        }, Math.max(0, (-1 / 2) * Math.pow(i, 2) + 50 * i));
+    }
+
+
 }
 
 function useless() {
