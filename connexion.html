@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/css/theme.css">
+    <title>Projet AFEC</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container-header container-logo"><img class="logo" src="images/logo.png" alt="logo de l'aplication"
+        width="112" height="64"></div>
+        <div class="container-header container-title"><h1 class="title">Connexion</h1></div>
+        <div class="container-header container-photo-profil">
+            <img class="photo-profil bouton_user" src="images/default_user_profile_picture.jpg" alt="photo de profil"
+            width="64" height="64">
+        </div>
+    </header>
+    <main>
+        <article class="containerConnexion">
+            <img src="images/default_user_profile_picture" alt="">
+            <form action="connexion.php" method="post">
+                <div class="connexion-mail">
+                    <label for="email">Adresse email</label>
+                    <input type="email" name="email" id="email" placeholder="Entrez votre adresse email" required>
+                </div>
+                <div class="connexion-password">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" id="password" placeholder="Entrez votre mot de passe" required>
+                </div>
+                <div class="connexion-chekbox">
+                    <input type="checkbox" name="remember" id="remember">
+                    <label for="remember">Se souvenir de moi</label>
+                </div>
+                <div class="connexion-button">
+                    <button type="submit" class="btn">Se connecter</button>
+                    <button class="btn">Créer un compte</button>
+                </div>
+            </form>
+        </article>
+    </main>
+    <footer class="footer">
+    </footer>
+
+</body>
+
+</html>

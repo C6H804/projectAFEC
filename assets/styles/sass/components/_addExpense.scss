@@ -1,27 +1,99 @@
-.c-addExpense-product {
+//créer variable pour la taille ou il faudras changer le flex en 2*2
+$minSizeAddExpense: 870px;
+
+.container-addExpense {
+    display: flex;
+    gap: 22px;
+    padding: 22px;
     width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.c-addExpense-product {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    border: solid 1px black;
-    &_mainRow {
+    gap: 22px;
+    background-color: $colorA;
+    padding: 12px;
+    border-radius: 1em;
+    align-items: center;
+    grid-template-columns: 64px auto 64px;
+
+    &-inputArea {
         display: flex;
+        justify-content: flex-start;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
-        &_name {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: flex-end;
-        }
-        
-        &_price {
-            width: 50%;
-        }
+        gap: 0.25em 1em;
     }
+
 }
 
-.expenseProductInput {
+.c-addExpense-form {
     width: 100%;
-    height: 2em;
+}
+
+.addExpenseDiv {
+    height: 40px;
+    border: solid 1px black;
+    border-radius: 1em;
+    padding: 0.5em;
+}
+
+.expenseProductAmmountInput {
+    max-width: 80px;
+}
+
+.expenseProductPriceUnitInput {
+    max-width: 120px;
+}
+
+.expenseProductNameInput {
+    width: 100%;
+}
+
+.expenseProductTextValid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 220px;
+}
+
+.inputAreaName {
+    min-width: 200px;
+    width: 100%;
+}
+
+.inputAreaPrice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    max-width: 160px;
+}
+
+.inputAreaAmmount {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    max-width: 160px;
+}
+
+.expenseProductAmmountInput::-webkit-outer-spin-button,
+.expenseProductAmmountInput::-webkit-inner-spin-button,
+.expenseProductPriceUnitInput::-webkit-outer-spin-button,
+.expenseProductPriceUnitInput::-webkit-inner-spin-button,
+.InputPrixTotalProduct::-webkit-outer-spin-button,
+.InputPrixTotalProduct::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.InputPrixTotalProduct {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    field-sizing: content;
 }

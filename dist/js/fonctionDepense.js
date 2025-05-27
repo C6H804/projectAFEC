@@ -1,7 +1,3 @@
-import { createElement } from "../../assets/scripts/_FonctionCreateElement.js";
-
-// expressJs
-
 let dataSetTest = [
     [
         [0, "Courses", "07/04/25-16h44", 65.58, 8, "images/pates.jpg"],
@@ -99,11 +95,23 @@ let dataSetTest = [
     ]
 ];
 
+function createElement(tagName, attributes = {}) {
+    const element = document.createElement(tagName);
+    for (const [attribute, value] of Object.entries(attributes)) {
+        element.setAttribute(attribute, value);
+    }
+    return element;
+}
+
+
+
 function init() {
     console.log("init depense.js");
     // essayer le plus possible d'utiliser des noms de variables, fonctions et autres en anglais exemple : dépense -> expense, produit -> product, etc...
-    loadExpense(3, document.getElementById("depenses_container-db"));
+    loadExpense(6, document.getElementById("depenses_container-db"));
 }
+
+// import { createElement } from "../../assets/scripts/_FonctionCreateElement.js";
 
 
 function loadExpense(ammount, parent) {
@@ -131,7 +139,7 @@ function addExpense(parent, id) {
 
     let image = createElement("img", { class: "image-depense", src: expenseData[1], alt: "image de la dépense", width: 48, height: 48, });
     let name = createElement("div", { class: "nom-depense bold" });
-    name.innerHTML = expenseData[2];
+    name.innerText = expenseData[2];
     let dateMobile = createElement("div", { class: "mobile date large-mobile italic" });
     dateMobile.innerHTML = expenseData[3];
     let dateDesktop = createElement("div", { class: "date desktop italic" });
@@ -244,7 +252,6 @@ function unfoldDb(id, mobile) {
     header.onclick = function () { refoldDb(id, true) };
 }
 
-
 function addProduct(id, data, target) {
     let produit = createElement("div", { class: "produit" });
 
@@ -324,7 +331,6 @@ function refoldDb(id, mobile) {
 
     let body = document.querySelector("#middle" + id);
     // let body = document.getElementById("middle" + id);
-    console.log(body);
     let products = body.querySelectorAll(".produit");
 
     for (let i = 0; i < products.length; i++) {
@@ -345,5 +351,3 @@ function refoldDb(id, mobile) {
 function useless() {
     console.log("spam");
 }
-
-init();

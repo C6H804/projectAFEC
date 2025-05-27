@@ -1,11 +1,13 @@
-header {
+.header {
     background-color: $colorA;
     display: flex;
     flex-direction: row;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    justify-content: space-around;
+    padding: 1em;
+    // padding-top: 1em;
+    // padding-bottom: 1em;
+    justify-content: space-between;
     align-items: center;
+    // padding: 1em;
 }
 
 .container-header {
@@ -22,4 +24,8 @@ header {
     border: solid 5px black;
     border-radius: 100%;
     background-color: $colorC;
+}
+
+h1 {
+    font-size: 8rem;
 }

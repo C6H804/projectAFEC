@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dist/css/theme.css">
     <title>Ajout d'une dépense</title>
-    <script src="dist/js/fonctionDepense.js"></script>
+    <script type="module" src="dist/js/fonctionDepense.js"></script>
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <div class="container-header container-logo"><img class="logo" src="images/logo.png" alt="logo de l'aplication"
                 width="112" height="64"></div>
         </div>
@@ -27,18 +27,25 @@
     </nav>
     <hr>
     <main>
+
         <div class="container-addExpense">
+
+
+
+
             <div class="nameAddExpense"><input type="text" value="Nom de la dépense"></div>
             <div class="c-addExpense-product">
-                <div class="c-addExpense-product_img"><img src="images/pates.jpg" width="68" height="68" alt=""></div>
-                <div class="c-addExpense-product_mainRow">
-                    <div class="c-addExpense-product_mainRow_name"><input type="text" class="expenseProductInput"></div>
-                    <div class="c-addExpense-product_mainRow_price"><input type="number" class="expenseProductInput"></div>
-                    <div class="c-addExpense-product_mainRow_ammount"><input type="number" class="expenseProductInput"></div>
+                <div class="c-addExpense-product-image"><img src="images/pates.jpg" width="64" height="64" alt=""></div>
+                <div class="c-addExpense-product-inputArea">
+                    <div class="inputAreaName"><input type="text" id="inputName0" placeholder="Nom du produit" class="addExpenseDiv expenseProductNameInput"></div>
+                    <div class="inputAreaPrice"><label for="expenseProductPriceUnitInput">Prix : </label><input type="number" id="inputPrice0" placeholder="Prix du produit" class="addExpenseDiv expenseProductPriceUnitInput"></div>
+                    <div class="inputAreaAmmount"><label for="expenseProductAmmountInput">Quantité : </label><input type="number" id="inputAmmount0" placeholder="Quantité" class="addExpenseDiv expenseProductAmmountInput"></div>
+                    <div class="expenseProductTextValid bold"><label class="bold" for="inputTotalPrice0"># 1/1 Prix total du produit : </label><input type="number" value="0.00" id="inputTotalPrice0" class="bold InputPrixTotalProduct">€</div>
                 </div>
-                <div class="c-addExpense-product_trash"><img src="icons/trash-xmark.svg" alt="" width="68" height="68"></div>
+                <div class="c-addExpense-product-trashArea"><img src="icons/trash-xmark.svg" width="52" height="52" alt=""></div>
             </div>
         </div>
+
 
     </main>
     <footer>

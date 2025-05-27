@@ -1,15 +1,30 @@
+<?php
+    session_start();
+    require_once 'fonctions.php';
+    require_once 'config/settings.php';
+    if (isset($_SESSION)) {
+        consoleLog("session active");
+        consoleLog("bonjour " . $_SESSION['prenom']);
+    } else {
+        consoleLog("session inactive");
+        consoleLog("redirection vers la page de connexion");
+        // header("Location: connexion.php");
+        // exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dist/css/theme.css">
+    <link rel="stylesheet" href="<?= CSS_DIR;?>theme.css<?php echo '?v=' . filemtime(CSS_DIR . 'theme.css'); ?>">
     <title>Projet AFEC</title>
 </head>
 
 <body>
-    <header class="header">
+    <header>
         <div class="container-header container-logo"><img class="logo" src="images/logo.png" alt="logo de l'aplication"
                 width="112" height="64"></div>
         <button class="btn-header desktop">Ajouter une nouvelle dépense</button>
@@ -43,8 +58,7 @@
             <label for="ajoutDepenseBtnM">Ajouter une dépense</label>
         </div>
     </footer>
-
-    <script type="module" src="dist/js/fonctionDepense.js"></script>
+    <script type="module" src="<?= CSS_DIR; ?>fonctionDepense.js <?php '?v=' . filemtime(CSS_DIR . 'theme.css'); ?>"></script>
 </body>
 
 </html>
