@@ -1,12 +1,15 @@
 <?php
 // fonctions.php
 
-function connexionDB() {
-    $db = new PDO('mysql:host=localhost;
+function connexionDB()
+{
+    $db = new PDO(
+        'mysql:host=localhost;
     dbname=money;
     charset=utf8mb4',
-    'root',
-    '');
+        'root',
+        ''
+    );
     if ($db) {
         consoleLog('connexion à la base de donnée réussie');
         return $db;
@@ -18,11 +21,13 @@ function connexionDB() {
 }
 
 
-function consoleLog($message) {
+function consoleLog($message)
+{
     echo "<script>console.log('$message');</script>";
 }
 
-function connexionAccount($email, $password, $db) {
+function connexionAccount($email, $password, $db)
+{
     $userData = $db->query("SELECT * FROM user WHERE mail = '$email'")->fetchAll(PDO::FETCH_ASSOC);
     foreach ($userData as $user) {
         if (password_verify($password, $user['mdp'])) {
@@ -39,7 +44,8 @@ function connexionAccount($email, $password, $db) {
     return true;
 }
 
-function registerAccount($email, $password, $validPassword, $name, $surname, $acceptConditions, $db) {
+function registerAccount($email, $password, $validPassword, $name, $surname, $acceptConditions, $db)
+{
     $newPassword = password_hash($password, PASSWORD_DEFAULT);
     consoleLog("mot de passe haché : $newPassword");
     if ($password === $validPassword) {
@@ -55,17 +61,28 @@ function registerAccount($email, $password, $validPassword, $name, $surname, $ac
         consoleLog("Les mots de passe ne correspondent pas");
         return false;
     }
-
 }
 
 
-function getProfilePicture($idImageUser,$db) {
+function getProfilePicture($idImageUser, $db)
+{
     // imagePath = $db->query("SELECT path FROM image WHERE id = '$idImageUser'")->fetchColumn();
     $imageData = $db->query("SELECT chemin FROM userImage WHERE id = '$idImageUser'")->fetch(PDO::FETCH_ASSOC);
     return $imageData['chemin'];
 }
 
+function addExpense($idUser, $idImageProduct, $name, $price, $quantity, $db) {
+    $result = "INSERT INTO depense (idUser, idImageProduct, nom, prix, quantite) VALUES ('$idUser', '$idImageProduct', '$name', '$price', '$quantity')";
+    
+}
 
-?>
 
-
+function verifyEmpty($array) {
+    foreach ($array as $value) {
+        if (empty($value)) {
+            consoleLog("Un champ est vide");
+            return false;
+        }
+    }
+    return true;
+}
