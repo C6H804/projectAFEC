@@ -12,20 +12,12 @@ $profilePicture = isset($_SESSION['idImageUser']) ? getProfilePicture($_SESSION[
 
 if (isset($_POST)) {
     consoleLog("POST request received");
-
-
-    if (verifyEmpty($_POST["nameExpense"])) {
-        consoleLog("Le nom de la dépense est vide");
-    } else {
-        consoleLog("Le nom de la dépense est : " . $_POST["nameExpense"]);
-    }
+    addExpense($_SESSION['id'], 1, $_POST["nameExpense"], getTotalExpensePrice($_POST["priceTotal"]), count($_POST["nameProduct"]), $db);
+    $expenseId = $db->lastInsertId();
     
-    
-    var_dump($_POST);
-    echo "<br>";
-    var_dump($_POST["nameProduct"]);
-    foreach($_POST["nameProduct"] as $key => $value) {
-        echo "Product Name: " . htmlspecialchars($value) . "<br>";
+    for ($i = 0; $i < count($_POST["nameProduct"]); $i++) {
+// function addProduct($idExpense, $idImageProduct, $name, $priceUnit, $quantity, $prixTotal, $db)
+        addExpense($expenseId, 1, $_POST["nameProduct"][$i], $_POST["priceUnit"][$i], $_POST["quantityProduct"][$i], $_POST["priceTotal"][$i], $db);
     }
 }
 

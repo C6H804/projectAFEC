@@ -1,23 +1,33 @@
 <?php
 // fonctions.php
 
-function connexionDB()
+function connexionDB($local)
 {
-    $db = new PDO(
-        'mysql:host=localhost;
-    dbname=money;
-    charset=utf8mb4',
-        'root',
-        ''
-    );
-    if ($db) {
-        consoleLog('connexion à la base de donnée réussie');
-        return $db;
-    } else {
-        consoleLog('connexion à la base de donnée échouée');
+    if ($local) {
+        $db = new PDO(
+            'mysql:host=localhost;
+            dbname=money;
+            charset=utf8mb4',
+            'root',
+            ''
+        );
+        if ($db) {
+            consoleLog('connexion à la base de donnée réussie');
+            return $db;
+        } else {
+            consoleLog('connexion à la base de donnée échouée');
+            return null;
+        }
         return null;
+    } else {
+        $db = new PDO(
+            "mysql:host=blobidesafec.mysql.db;
+            dbname=blobidesafec;
+            charset=utf8mb4",
+            "blobidesafec",
+            "Afec2025Dax"
+        );
     }
-    return null;
 }
 
 
@@ -52,14 +62,11 @@ function registerAccount($email, $password, $validPassword, $name, $surname, $ac
         if ($acceptConditions) {
             $db->exec("INSERT INTO user (mail, mdp, nom, prenom, idImageUser) VALUES ('$email', '$newPassword', '$name', '$surname', 1)");
             consoleLog("Compte créé avec succès");
-            return true;
         } else {
             consoleLog("Vous devez accepter les conditions d'utilisation");
-            return false;
         }
     } else {
         consoleLog("Les mots de passe ne correspondent pas");
-        return false;
     }
 }
 
@@ -71,18 +78,23 @@ function getProfilePicture($idImageUser, $db)
     return $imageData['chemin'];
 }
 
-function addExpense($idUser, $idImageProduct, $name, $price, $quantity, $db) {
-    $result = "INSERT INTO depense (idUser, idImageProduct, nom, prix, quantite) VALUES ('$idUser', '$idImageProduct', '$name', '$price', '$quantity')";
-    
+function addExpense($idUser, $idImageProduct, $name, $price, $quantity, $db)
+{
+    $db->exec("INSERT INTO expense (idUser, idImageProduct, nom, quantitee, prix) VALUES ('$idUser', '$idImageProduct', '$name', '$quantity', '$price')");
+    consoleLog("fin de l'execution de la fonction addExpense");
 }
 
-
-function verifyEmpty($array) {
-    foreach ($array as $value) {
-        if (empty($value)) {
-            consoleLog("Un champ est vide");
-            return false;
+function getTotalExpensePrice($values) {
+    $total = 0;
+    foreach ($values as $value) {
+        if (is_numeric($value)) {
+            $total += $value;
         }
     }
-    return true;
+    return $total;
+}
+
+function addProduct($idExpense, $idImageProduct, $name, $priceUnit, $quantity, $prixTotal, $db)
+{
+    $db->exec("INSERT INTO product (idDepense, idImageProduct, nom, prixUnite, quantitee, prixTotal) VALUES ('$idExpense', '$idImageProduct', '$name', '$priceUnit', '$quantity', '$prixTotal')");
 }

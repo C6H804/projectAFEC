@@ -18,30 +18,15 @@ require_once "fonctions.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    consoleLog("la méthode de la requête est POST");
-    if (isset($_REQUEST['email'] )
-    && isset($_REQUEST['password']) 
-    && isset($_REQUEST['validPassword']) 
-    && isset($_REQUEST['name']) 
-    && isset($_REQUEST['surName']) 
-    && isset($_REQUEST['remember']) 
-    && isset($_REQUEST['acceptConditions'])) {
-        if(connexionDB();
-        $createAccount = registerAccount(
-        $_REQUEST["email"], 
-        $_REQUEST["password"], 
-        $_REQUEST["validPassword"],
-        $_REQUEST["name"], 
-        $_REQUEST["surName"], 
-        $_REQUEST["acceptConditions"],
-        $db)) {
-            consoleLog("compte créé");
-            $_SESSION['email'] = $_REQUEST['email'];
-            $_SESSION['name'] = $_REQUEST['name'];
-            $_SESSION['surName'] = $_REQUEST['surName'];
-            $_SESSION['idImageUser'] = 1; // par défaut, image utilisateur 1
-            header("Location: index.php");
-        }
+    $db = connexionDB(true);
+    // consoleLog("la méthode de la requête est POST");
+    if (isset($_REQUEST['email']) && isset($_REQUEST['password']) && isset($_REQUEST['validPassword']) && isset($_REQUEST['name']) && isset($_REQUEST['surName']) && isset($_REQUEST['remember']) && isset($_REQUEST['acceptConditions'])) {
+        registerAccount($_REQUEST["email"], $_REQUEST["password"], $_REQUEST["validPassword"], $_REQUEST["name"], $_REQUEST["surName"], $_REQUEST["acceptConditions"], $db);
+        $_SESSION['email'] = $_REQUEST['email'];
+        $_SESSION['name'] = $_REQUEST['name'];
+        $_SESSION['surName'] = $_REQUEST['surName'];
+        $_SESSION['idImageUser'] = 1; // par défaut, image utilisateur 1
+        header("Location: index.php");
     }
 }
 
