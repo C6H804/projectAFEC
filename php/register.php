@@ -18,7 +18,7 @@ require_once "fonctions.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $db = connexionDB(true);
+    $db = connexionDB(false);
     // consoleLog("la méthode de la requête est POST");
     if (isset($_REQUEST['email']) && isset($_REQUEST['password']) && isset($_REQUEST['validPassword']) && isset($_REQUEST['name']) && isset($_REQUEST['surName']) && isset($_REQUEST['remember']) && isset($_REQUEST['acceptConditions'])) {
         registerAccount($_REQUEST["email"], $_REQUEST["password"], $_REQUEST["validPassword"], $_REQUEST["name"], $_REQUEST["surName"], $_REQUEST["acceptConditions"], $db);
