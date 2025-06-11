@@ -93,4 +93,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button class="btn">J'ai déjà un compte</button>
                 </div>
             </form>
-<?php
