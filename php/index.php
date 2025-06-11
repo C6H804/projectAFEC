@@ -21,10 +21,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= CSS_DIR;?>theme.css<?php echo '?v=' . filemtime(CSS_DIR . 'theme.css'); ?>">
     <title>Projet AFEC</title>
+    <script type="module" src="assets/scripts/_FonctionCreateElement.js"></script>
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <div class="container-header container-logo"><img class="logo" src="images/logo.png" alt="logo de l'aplication"
                 width="112" height="64"></div>
         <button class="btn-header desktop">Ajouter une nouvelle dépense</button>
@@ -33,7 +34,6 @@
             <img class="photo-profil bouton_user" src="images/default_user_profile_picture.jpg" alt="photo de profil"
                 width="64" height="64">
         </div>
-        <script type="module" src="assets/scripts/_FonctionCreateElement.js"></script>
     </header>
     <nav>
         <!-- <img src="icons/arrow-turn-down-left.svg" alt="fleche de retour" width="24" height="24" class="button-back"> -->

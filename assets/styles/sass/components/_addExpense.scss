@@ -129,11 +129,24 @@ $minSizeAddExpense: 870px;
 
 .c-addExpense-product-image {
     border-radius: 1em;
+    border: 2px solid black;
     overflow: hidden;
     @media (max-width: 470px) {
         display: none;
     }
 }
+
+.c-addExpense-product-trashArea > svg {
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    @media (max-width: 470px) {
+        width: 32px;
+        height: 32px;
+    }
+
+}
+
 
 
 .inputTotalExpense {

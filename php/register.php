@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require_once "fonctions.php";
+require_once "config/settings.php";
 
 // consoleLog(password_hash("motDePasse",PASSWORD_DEFAULT,["cost"=>12]));
 
@@ -18,16 +19,16 @@ require_once "fonctions.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $db = connexionDB(false);
-    // consoleLog("la méthode de la requête est POST");
-    if (isset($_REQUEST['email']) && isset($_REQUEST['password']) && isset($_REQUEST['validPassword']) && isset($_REQUEST['name']) && isset($_REQUEST['surName']) && isset($_REQUEST['remember']) && isset($_REQUEST['acceptConditions'])) {
-        registerAccount($_REQUEST["email"], $_REQUEST["password"], $_REQUEST["validPassword"], $_REQUEST["name"], $_REQUEST["surName"], $_REQUEST["acceptConditions"], $db);
-        $_SESSION['email'] = $_REQUEST['email'];
-        $_SESSION['name'] = $_REQUEST['name'];
-        $_SESSION['surName'] = $_REQUEST['surName'];
-        $_SESSION['idImageUser'] = 1; // par défaut, image utilisateur 1
-        header("Location: index.php");
-    }
+    consoleLog("post detected");
+    $db = connexionDB(true);
+    var_dump($_POST);
+    if (registerAccount($_POST["email"], $_POST["password"], $_POST["validPassword"], $_POST["name"], $_POST["surName"], $_POST["acceptConditions"], $db)) {
+        consoleLog("inscription réussie");
+        // header("Location: index.php");
+        // exit();
+    } else {
+        consoleLog("inscription échouée");
+    }    
 }
 
 ?>
@@ -38,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dist/css/theme.css">
+    <link rel="stylesheet" href="<?= CSS_DIR;?>theme.css<?php echo '?v=' . filemtime(CSS_DIR . 'theme.css'); ?>">
     <title>Projet AFEC</title>
     <script>
         console.log("démarrage de la page");
@@ -46,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <div class="container-header container-logo"><img class="logo" src="images/logo.png" alt="logo de l'aplication"
         width="112" height="64"></div>
         <div class="container-header container-title"><h1 class="title">register</h1></div>
@@ -92,8 +93,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button class="btn">J'ai déjà un compte</button>
                 </div>
             </form>
-<?php 
-
-
-
-
+<?php

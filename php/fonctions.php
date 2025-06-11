@@ -1,9 +1,37 @@
 <?php
 // fonctions.php
 
-function connexionDB($local)
+function loadEnv($path)
 {
-    if ($local) {
+    if (!file_exists($path)) {
+        return;
+    }
+
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) {
+            continue;
+        }
+        list($name, $value) = explode('=', $line, 2);
+        $name = trim($name);
+        $value = trim($value);
+        if (!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)) {
+            putenv(sprintf('%s=%s', $name, $value));
+            $_ENV[$name] = $value;
+            $_SERVER[$name] = $value;
+        }
+    }
+}
+
+
+
+function connexionDB($local = true)
+{
+
+    loadEnv(__DIR__ . '/../.env');
+    $env = getenv('APP_ENV') ?: 'local';
+
+    if ($env === 'local') {
         $db = new PDO(
             'mysql:host=localhost;
             dbname=money;
@@ -56,18 +84,19 @@ function connexionAccount($email, $password, $db)
 
 function registerAccount($email, $password, $validPassword, $name, $surname, $acceptConditions, $db)
 {
-    $newPassword = password_hash($password, PASSWORD_DEFAULT);
-    consoleLog("mot de passe haché : $newPassword");
-    if ($password === $validPassword) {
-        if ($acceptConditions) {
-            $db->exec("INSERT INTO user (mail, mdp, nom, prenom, idImageUser) VALUES ('$email', '$newPassword', '$name', '$surname', 1)");
-            consoleLog("Compte créé avec succès");
-        } else {
-            consoleLog("Vous devez accepter les conditions d'utilisation");
-        }
-    } else {
-        consoleLog("Les mots de passe ne correspondent pas");
+    $request = $db->query("SELECT id FROM user WHERE mail = '$email'");
+    if ($request->rowCount() > 0) {
+        consoleLog("un compte existe Déjà avec cette adresse email");
+        return false;
     }
+    if ($password === $validPassword && $acceptConditions === "on") {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        consoleLog("mot de passe haché : $hashedPassword");
+        $db->exec("INSERT INTO user (mail, mdp, nom, prenom) VALUES ('$email', '$hashedPassword', '$name', '$surname')");
+        consoleLog("inscription réussie pour $name $surname"); 
+        return true; 
+    }
+    return false;
 }
 
 
