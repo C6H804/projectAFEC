@@ -30,7 +30,7 @@ function connexionDB($local = true)
 
     loadEnv(__DIR__ . '/../.env');
     $env = getenv('APP_ENV') ?: 'local';
-    die ("env : $env");
+    
     if ($env === 'local') {
         $db = new PDO(
             'mysql:host=localhost;
@@ -55,6 +55,13 @@ function connexionDB($local = true)
             "blobidesafec",
             "Afec2025Dax"
         );
+        if ($db) {
+            consoleLog('connexion à la base de donnée réussie');
+            return $db;
+        } else {
+            consoleLog('connexion à la base de donnée échouée');
+            return null;
+        }
     }
 }
 
