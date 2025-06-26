@@ -61,8 +61,8 @@ function verificationConnexion() {
 
 <body>
     <header>
-        <div class="container-header container-logo"><img class="logo" src="images/logo.png" alt="logo de l'aplication"
-        width="112" height="64"></div>
+        <div class="container-header container-logo"><img class="logo" src="images/logo.jpg" alt="logo de l'aplication"
+        width="64" height="64"></div>
         <div class="container-header container-title"><h1 class="title">Connexion</h1></div>
         <div class="container-header container-photo-profil">
             <img class="photo-profil bouton_user" src="images/default_user_profile_picture.jpg" alt="photo de profil"

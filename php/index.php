@@ -2,15 +2,12 @@
     session_start();
     require_once 'fonctions.php';
     require_once 'config/settings.php';
-    if (isset($_SESSION)) {
-        consoleLog("session active");
-        consoleLog("bonjour " . $_SESSION['prenom']);
-    } else {
-        consoleLog("session inactive");
-        consoleLog("redirection vers la page de connexion");
-        // header("Location: connexion.php");
-        // exit();
+    if (!isset($_SESSION['id'])) {
+        header("Location: connexion.php");
+        exit();
     }
+    $db = connexionDB();
+    $profilePicture = isset($_SESSION['idImageUser']) ? getProfilePicture($_SESSION['idImageUser'], $db) : "images/profileImage/default.jpg";
 ?>
 
 <!DOCTYPE html>
@@ -21,22 +18,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= CSS_DIR;?>theme.css<?php echo '?v=' . filemtime(CSS_DIR . 'theme.css'); ?>">
     <title>Projet AFEC</title>
-    <script type="module" src="assets/scripts/_FonctionCreateElement.js"></script>
+    <script type="module" src="../assets/scripts/_FonctionCreateElement.js"></script>
 </head>
 
 <body>
     <header class="header">
-        <div class="container-header container-logo"><img class="logo" src="images/logo.png" alt="logo de l'aplication"
-                width="112" height="64"></div>
+        <div class="container-header container-logo"><img class="logo" src="../images/logo.jpg" alt="logo de l'aplication"
+                width="64" height="64"></div>
         <button class="btn-header desktop">Ajouter une nouvelle dépense</button>
         <button class="btn-header btn-blue desktop">Gérer mes dépenses</button>
         <div class="container-header container-photo-profil">
-            <img class="photo-profil bouton_user" src="images/default_user_profile_picture.jpg" alt="photo de profil"
+            <img class="photo-profil bouton_user" src="../images/default_user_profile_picture.jpg" alt="photo de profil"
                 width="64" height="64">
         </div>
     </header>
     <nav>
-        <!-- <img src="icons/arrow-turn-down-left.svg" alt="fleche de retour" width="24" height="24" class="button-back"> -->
+        <!-- <img src="../icons/arrow-turn-down-left.svg" alt="fleche de retour" width="24" height="24" class="button-back"> -->
         <h1 class="text-center">Mes dernières dépenses</h1>
         <!-- <span></span> -->
         <hr>
@@ -48,17 +45,17 @@
         <div class="container-center"><button class="btn btn-blue mobile"
                 onclick="window.location.href='gestionDepenses.html'">Gérer mes dépenses</button></div>
         <article class="charts-container container-center">
-            <img src="images/templateChart.jpg" alt="graphiques de la semaine" class="charts">
+            <img src="../images/templateChart.jpg" alt="graphiques de la semaine" class="charts">
         </article>
     </main>
     <footer class="footer">
         <div class="footer__content">
-            <button onclick="window.location.href='ajoutDepense.html'" class="btn" id="ajoutDepenseBtnM"><img
-                    src="icons/plus-svgrepo-com.svg" alt="" width="32" height="32"></button>
+            <button onclick="window.location.href='ajoutDepense.html'" class="btn" id="ajoutDepenseBtnM"><svg src="../icons/plus-svgrepo-com.svg" width="48" height="48"></svg></button>
             <label for="ajoutDepenseBtnM">Ajouter une dépense</label>
         </div>
     </footer>
-    <script type="module" src="<?= CSS_DIR; ?>fonctionDepense.js <?php '?v=' . filemtime(CSS_DIR . 'theme.css'); ?>"></script>
+    <script type="module" src="<?= JS_DIR; ?>fonctionDepense.js <?php '?v=' . filemtime(CSS_DIR . 'theme.css'); ?>"></script>
+    <script src="../dist//js/fonctionDepense.js"></script>
 </body>
 
 </html>

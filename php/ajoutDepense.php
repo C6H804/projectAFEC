@@ -1,5 +1,6 @@
 <?php
-session_start();
+if (!isset($_SESSION)) 
+    session_start();
 
 require_once 'fonctions.php';
 require_once 'config/settings.php';
@@ -10,7 +11,7 @@ $profilePicture = isset($_SESSION['idImageUser']) ? getProfilePicture($_SESSION[
 
 if (isset($_POST)) {
     consoleLog("POST request received");
-    if (isset($_POST["id"])
+    if (isset($_SESSION["id"])
     && isset($_POST["nameExpense"])
     && isset($_POST["nameProduct"])
     && isset($_POST["priceUnit"])
@@ -18,12 +19,10 @@ if (isset($_POST)) {
     && isset($_POST["priceTotal"])) {
         consoleLog("All required fields are set");
         addExpense($_SESSION['id'], 1, $_POST["nameExpense"], getTotalExpensePrice($_POST["priceTotal"]), count($_POST["nameProduct"]), $db);
-        $expenseId = $db->lastInsertId();
-        
-        for ($i = 0; $i < count($_POST["nameProduct"]); $i++) {
-    // function addProduct($idExpense, $idImageProduct, $name, $priceUnit, $quantity, $prixTotal, $db)
-            addExpense($expenseId, 1, $_POST["nameProduct"][$i], $_POST["priceUnit"][$i], $_POST["quantityProduct"][$i], $_POST["priceTotal"][$i], $db);
-        }
+        $expenseId = getExpenseId($_SESSION["id"], $db);
+        addProducts($expenseId, $_POST["nameProduct"], $_POST["priceUnit"], $_POST["quantityProduct"], $_POST["priceTotal"], $db);
+        header("Location: index.php");
+        exit();
     } else {
         consoleLog("pas le bon post");
     }
@@ -44,8 +43,8 @@ if (isset($_POST)) {
 
 <body>
     <header class="header">
-        <div class="container-header container-logo"><img class="logo" src="<?= IMG_DIR; ?>logo.png" alt="logo de l'aplication"
-                width="112" height="64"></div>
+        <div class="container-header container-logo"><img class="logo" src="<?= IMG_DIR; ?>logo.jpg" alt="logo de l'aplication"
+                width="64" height="64"></div>
         </div>
         <div class="container-header container-photo-profil">
             <img class="photo-profil bouton_user" src="../<?php echo $profilePicture; ?>" alt="photo de profil"
@@ -64,9 +63,9 @@ if (isset($_POST)) {
 
         <div class="container-addExpense">
             <form action="" method="post" class="c-addExpense-form">
-                <div class="nameAddExpense"><input type="text" onfocus="handleFocus()" name="nameExpense" value="Nom de la dépense"></div>
+                <div class="nameAddExpense"><input class="inputId0" type="text" name="nameExpense" value="Nom de la dépense"></div>
                 <div class="c-addExpense-footer">
-                    <p class="bold renderTotalExpense" id="totalExpense">Total =<input class="inputTotalExpense bold inputNumber" id="totalPriceExpense" type="number" value="0.00"></input>€</p>
+                    <p class="bold renderTotalExpense" id="totalExpense">Total =<input step="0.01" class="inputTotalExpense bold inputNumber inputId0" id="totalPriceExpense" type="number" value="0.00"></input>€</p>
                     <button class="btn" id="btnAddProduct">Ajouter un produit</button>
                     <input type="submit" value="Enregistrer" class="btn btn-blue" id="btnSaveExpense"> 
                 </div>
@@ -78,5 +77,4 @@ if (isset($_POST)) {
     <footer>
     </footer>
 </body>
-
 </html>

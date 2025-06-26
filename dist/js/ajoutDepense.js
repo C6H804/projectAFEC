@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         addProduct();
     });
+
+    document.getElementById("")
+
 });
 
 function valueChange(id, price) {
@@ -53,10 +56,21 @@ function addProduct() {
     product.innerHTML = `
         <div class="c-addExpense-product-image"><img src="${imageDefault}" width="64" height="64" alt=""></div>
         <div class="c-addExpense-product-inputArea">
-                        <div class="c-addExpense-product-inputArea-Name"><input type="text" onchange="valueChange(${id},false)" id="inputName" name="nameProduct[]" placeholder="Nom du produit" class="addExpenseDiv expenseProductNameInput"></div>
-                        <div class="inputAreaPrice"><label for="expenseProductPriceUnitInput" class="desktop">Prix : </label><input type="number" onchange="valueChange(${id},true)" id="inputPrice${id}" name="priceUnit[]" placeholder="Prix du produit" class="addExpenseDiv expenseProductPriceUnitInput"></div>
-                        <div class="inputAreaAmmount"><label for="expenseProductAmmountInput" class="desktop">Quantité : </label><input type="number" onchange="valueChange(${id},true)" id="inputAmmount${id}" name="quantityProduct[]" placeholder="Quantité" class="addExpenseDiv expenseProductAmmountInput" value="1"></div>
-                        <div class="expenseProductTextValid bold"><label class="bold displayQuantityProduct" id="displayQuantityProduct${id}" for="inputTotalPrice0"># 1/1 Prix total du produit : </label><input type="number" onchange="valueChange(${id},false)" value="0.00" name="priceTotal[]" id="inputTotalPrice${id}" class="bold InputPrixTotalProduct">€</div>
+            <div class="c-addExpense-product-inputArea-Name">
+                <input type="text" required onchange="valueChange(${id},false)" id="inputName${id}" name="nameProduct[]" placeholder="Nom du produit" class="addExpenseDiv expenseProductNameInput inputID${id}">
+            </div>
+            <div class="inputAreaPrice">
+                <label for="expenseProductPriceUnitInput" class="desktop">Prix : </label>
+                <input type="number" required onchange="valueChange(${id},true)" step="0.01" id="inputPrice${id}" name="priceUnit[]" placeholder="Prix du produit" class="addExpenseDiv expenseProductPriceUnitInput inputID${id}">
+            </div>
+            <div class="inputAreaAmmount">
+                <label for="expenseProductAmmountInput" class="desktop">Quantité : </label>
+                <input type="number" required onchange="valueChange(${id},true)" id="inputAmmount${id}" name="quantityProduct[]" placeholder="Quantité" class="addExpenseDiv expenseProductAmmountInput inputID${id}" value="1">
+            </div>
+            <div class="expenseProductTextValid bold">
+                <label class="bold displayQuantityProduct" id="displayQuantityProduct${id}" for="inputTotalPrice${id}"># 1/1 Prix total du produit : </label>
+                <input type="number" required onchange="valueChange(${id},false)" value="0.00" name="priceTotal[]"  step="0.01" id="inputTotalPrice${id}" class="bold InputPrixTotalProduct inputID${id}">€
+            </div>
         </div>
         <div class="c-addExpense-product-trashArea" onclick="removeProduct(${id})">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="red" class="bi bi-trash3-fill" viewBox="0 0 16 16">
@@ -74,6 +88,15 @@ function addProduct() {
         image: imageDefault,
         id: id
     });
+
+    document.querySelectorAll(".inputID" + id).forEach((e) => {
+        e.addEventListener("focus", function() {
+            e.select();
+        });
+    })
+
+
+
     quantityChange()
 
 }
@@ -95,14 +118,4 @@ function quantityChange() {
     if (expense[0] == {}) {
         expense.slice(0, 1);
     }
-
-    document.querySelectorAll("")
-    
-
-}
-
-
-function handleFocus() {
-    // this.select();
-    console.log(id);
 }

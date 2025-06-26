@@ -3,6 +3,7 @@
 define ('IMG_DIR', '../images/');
 define ('CSS_DIR', '../dist/css/');
 define ('JS_DIR', '../dist/js/');
+define ('ICO_DIR', '../icons/');
 
 // Paramètres de connexion à la base de données MySQL
 /*return [

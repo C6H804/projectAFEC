@@ -95,6 +95,13 @@ let dataSetTest = [
     ]
 ];
 
+console.log("depense.js loaded");
+
+document.addEventListener("DOMContentLoaded", function () {
+    init();
+    console.log("DOM fully loaded and parsed");
+});
+
 function createElement(tagName, attributes = {}) {
     const element = document.createElement(tagName);
     for (const [attribute, value] of Object.entries(attributes)) {
@@ -103,16 +110,14 @@ function createElement(tagName, attributes = {}) {
     return element;
 }
 
-
-
 function init() {
     console.log("init depense.js");
     // essayer le plus possible d'utiliser des noms de variables, fonctions et autres en anglais exemple : dépense -> expense, produit -> product, etc...
     loadExpense(6, document.getElementById("depenses_container-db"));
 }
 
-// import { createElement } from "../../assets/scripts/_FonctionCreateElement.js";
 
+// import { createElement } from "../../assets/scripts/_FonctionCreateElement.js";
 
 function loadExpense(ammount, parent) {
     // savoir combient de dépenses à ajouter (paramètre de la fonction)
@@ -134,7 +139,6 @@ function addExpense(parent, id) {
 
     let expenseHeader = createElement("div", { class: "c-depense-db_header", id: "header" + id });
     expenseHeader.onclick = function () { unfoldDb(id, true) };
-
 
 
     let image = createElement("img", { class: "image-depense", src: expenseData[1], alt: "image de la dépense", width: 48, height: 48, });
@@ -344,8 +348,6 @@ function refoldDb(id, mobile) {
             }
         }, Math.max(0, (-1 / 2) * Math.pow(i, 2) + 50 * i));
     }
-
-
 }
 
 function useless() {
