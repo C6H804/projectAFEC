@@ -1,5 +1,5 @@
 <?php
-consoleLog("2");
+consoleLog(3);
 var_dump($_SESSION);
 
 function getExpense($db, $iduser) {
