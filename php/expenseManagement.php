@@ -41,6 +41,7 @@ require_once 'components/RenderExpense.php';
     </nav>
     <main>
         <?php
+        echo $_SESSION['id'];
         getExpense($db, $_SESSION['id']);
         ?>
     </main>

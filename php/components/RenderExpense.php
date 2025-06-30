@@ -7,11 +7,11 @@ function getExpense($db, $iduser) {
     $stmt->bindParam(':iduser', $iduser, PDO::PARAM_INT);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($result);
     renderExpense($result, $db);
 }
 
 function renderExpense($db, $expenses) {
+    echo('début de renderExpense');
     var_dump($expenses);
     // echo "<script> let expenses = [";
     foreach($expenses as $expense) {
@@ -22,15 +22,16 @@ function renderExpense($db, $expenses) {
         $totalPrice = $expense['pix'];
         $quantity = $expense['quantitee'];
         $imagePath = getImagePath($db, $expense['idImageProduct']);
-        echo "
-        {
-        id: $id,
-        name: '$name',
-        dqte. '$date',
-        totalPrice: $totalPrice,
-        quantity: $quantity,
-        imagePath: '$imagePath',
-        ";
+        print ("$id <br> $name <br> $date <br> $totalPrice<br>$quantity<br>");
+        // echo "
+        // {
+        // id: $id,
+        // name: '$name',
+        // dqte. '$date',
+        // totalPrice: $totalPrice,
+        // quantity: $quantity,
+        // imagePath: '$imagePath',
+        // ";
         // renderProduct($db, $id);
     }
     // echo "}];";
