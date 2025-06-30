@@ -9,7 +9,6 @@ if (!isset($_SESSION['id'])) {
 $db = connexionDB();
 require_once 'components/RenderExpense.php';
 
-consoleLog(5);
 var_dump($_SESSION);
 ?>
 
@@ -44,6 +43,8 @@ var_dump($_SESSION);
     </nav>
     <main>
         <?php
+        echo "6 <br>";
+
         echo $_SESSION['id'];
         getExpense($db, $_SESSION['id']);
         ?>
@@ -52,4 +53,5 @@ var_dump($_SESSION);
 
     </footer>
 </body>
+
 </html>
