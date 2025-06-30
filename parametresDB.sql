@@ -1,4 +1,3 @@
-
 CREATE table IF NOT EXISTS userImage (
     id INT PRIMARY KEY AUTO_INCREMENT,
     chemin VARCHAR(255) NOT NULL
@@ -13,7 +12,7 @@ CREATE TABLE IF NOT EXISTS user (
     prenom VARCHAR(50) NOT NULL,
     mail VARCHAR(100) NOT NULL UNIQUE,
     mdp VARCHAR(255) NOT NULL,
-    idImageUser INT,
+    idImageUser INT DEFAULT 1,
     FOREIGN KEY (idImageUser) REFERENCES userImage(id) ON DELETE SET NULL ON UPDATE CASCADE,
     dateInscription TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     dateLastConnexion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -90,3 +89,4 @@ FROM expense
 JOIN productImage ON expense.idImageProduct = productImage.id
 AND expense.idUser = 1
 WHERE idUser = 1;
+

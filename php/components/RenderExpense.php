@@ -11,12 +11,57 @@ function getExpense($db, $iduser) {
 }
 
 function renderExpense($expenses, $db) {
+    echo "
+    <script>
+    let expenses = [
+    ";
     foreach($expenses as $expense) {
+        $id = $expense['id'];
+        $name = $expense['nom'];
+        $date = $expense['date'];
+        $totalPrice = $expense['pix'];
+        $quantity = $expense['quantitee'];
         $imagePath = getImagePath($db, $expense['idImageProduct']);
-        echo `<script>
-        let newExpense = [$expense['id'], "$expense['nom']", "$expense['date']", "$expense['prixTotal']", $expense['quantitee'], "$imagePath"]
-        </script>`
+        echo "
+        {
+        id: $id,
+        name: '$name',
+        dqte. '$date',
+        totalPrice: $totalPrice,
+        quantity: $quantity,
+        imagePath: '$imagePath',
+        ";
+        renderProduct($db, $id);
     }
+    echo "];";
+    echo "console.log(expenses);";
+    echo" </script>";
+}
+
+
+function renderProduct($db, $expenseId) {
+    echo "products: [";
+    $products = getProduct($db, $expenseId);
+    foreach($products as $p) {
+        $pId = $p['id'];
+        $pName = $p['nom'];
+        $pPrixUnite = $p['prixUnite'];
+        $pQuantity = $p['quantitee'];
+        $pPrixTotal = $p['prixTotal'];
+        $pImagePath = getImagePath($db, $p['idImageProduct']);
+
+        echo "
+        {
+        id: $pId,
+        name: '$pName',
+        prixUnite: $prixUnite,
+        quantity: $pQuantity,
+        prixTotal: $pPrixTotal,
+        imagePath: '$pImagePath'
+    },
+        ";
+    }
+    echo "]},";
 }
 
 function getProduct($db, $expenseId) {
@@ -27,10 +72,6 @@ function getProduct($db, $expenseId) {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function renderProduct($products) {
-echo "aaa";
-}
-
 function getImagePath($db, $path) {
     $query = "SELECT chemin FROM product.image WHERE id = :id";
     $stmt = $db->prepare($query);
@@ -39,3 +80,4 @@ function getImagePath($db, $path) {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result ? $result['chemin'] : null;
 }
+
