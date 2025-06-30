@@ -17,6 +17,7 @@ function renderExpense($db, $expenses) {
     let expenses = [
     ";
     foreach($expenses as $expense) {
+        
         $id = $expense['id'];
         $name = $expense['nom'];
         $date = $expense['date'];
@@ -32,17 +33,17 @@ function renderExpense($db, $expenses) {
         quantity: $quantity,
         imagePath: '$imagePath',
         ";
-        renderProduct($db, $id);
+        // renderProduct($db, $id);
     }
-    echo "];";
+    echo "}];";
     echo "console.log(expenses);";
     echo" </script>";
 }
 
 
 function renderProduct($db, $expenseId) {
-    echo "products: [";
     $products = getProduct($db, $expenseId);
+    echo "products: [";
     foreach($products as $p) {
         $pId = $p['id'];
         $pName = $p['nom'];
@@ -62,7 +63,7 @@ function renderProduct($db, $expenseId) {
     },
         ";
     }
-    echo "]},";
+    echo "]";
 }
 
 function getProduct($db, $expenseId) {
