@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 
 function getExpense($db, $iduser) {
@@ -8,7 +8,7 @@ function getExpense($db, $iduser) {
     $stmt->execute();
     var_dump($stmt);
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    renderExpense($result, $db);
+    renderExpense($db, $result);
 }
 
 function renderExpense($db, $expenses) {

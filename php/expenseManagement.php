@@ -9,7 +9,7 @@ if (!isset($_SESSION['id'])) {
 $db = connexionDB();
 require_once 'components/RenderExpense.php';
 
-consoleLog(4);
+consoleLog(5);
 var_dump($_SESSION);
 ?>
 
