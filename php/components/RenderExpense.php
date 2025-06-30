@@ -12,12 +12,9 @@ function getExpense($db, $iduser) {
 
 function renderExpense($db, $expenses) {
     var_dump($expenses);
-    echo "
-    <script>
-    let expenses = [
-    ";
+    // echo "<script> let expenses = [";
     foreach($expenses as $expense) {
-        
+
         $id = $expense['id'];
         $name = $expense['nom'];
         $date = $expense['date'];
@@ -35,9 +32,9 @@ function renderExpense($db, $expenses) {
         ";
         // renderProduct($db, $id);
     }
-    echo "}];";
-    echo "console.log(expenses);";
-    echo" </script>";
+    // echo "}];";
+    // echo "console.log(expenses);";
+    // echo" </script>";
 }
 
 
