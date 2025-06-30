@@ -11,6 +11,7 @@ function getExpense($db, $iduser) {
 }
 
 function renderExpense($db, $expenses) {
+    var_dump($expenses);
     echo "
     <script>
     let expenses = [

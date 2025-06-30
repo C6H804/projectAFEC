@@ -8,8 +8,6 @@ if (!isset($_SESSION['id'])) {
 }
 $db = connexionDB();
 require_once 'components/RenderExpense.php';
-
-
 ?>
 
 
