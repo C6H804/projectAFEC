@@ -10,7 +10,7 @@ function getExpense($db, $iduser) {
     renderExpense($result, $db);
 }
 
-function renderExpense($expenses, $db) {
+function renderExpense($db, $expenses) {
     echo "
     <script>
     let expenses = [
@@ -54,7 +54,7 @@ function renderProduct($db, $expenseId) {
         {
         id: $pId,
         name: '$pName',
-        prixUnite: $prixUnite,
+        prixUnite: $pPrixUnite,
         quantity: $pQuantity,
         prixTotal: $pPrixTotal,
         imagePath: '$pImagePath'
