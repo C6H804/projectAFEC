@@ -42,8 +42,8 @@ var_dump($_SESSION);
         <hr>
     </nav>
     <main>
+        <h2>6</h2>
         <?php
-        echo "6 <br>";
 
         echo $_SESSION['id'];
         getExpense($db, $_SESSION['id']);
