@@ -7,6 +7,7 @@ function getExpense($db, $iduser) {
     $stmt->bindParam(':iduser', $iduser, PDO::PARAM_INT);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($result);
     renderExpense($result, $db);
 }
 
