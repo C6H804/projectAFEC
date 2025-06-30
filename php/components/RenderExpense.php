@@ -1,5 +1,6 @@
 <?php
-
+consoleLog("2");
+var_dump($_SESSION);
 
 function getExpense($db, $iduser) {
     $query = "SELECT * FROM expense WHERE idUser = :iduser ORDER BY date DESC";
