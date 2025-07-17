@@ -33,7 +33,7 @@ function connexionDB($local = true)
     
     if ($env === 'local') {
         $db = new PDO(
-            'mysql:host=localhost;
+            'mysql:host=localhost:3307;
             dbname=money;
             charset=utf8mb4',
             'root',

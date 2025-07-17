@@ -2,16 +2,9 @@
 session_start();
 require_once 'fonctions.php';
 require_once 'config/settings.php';
-if (!isset($_SESSION['id'])) {
-    header("Location: connexion.php");
-    exit();
-}
 $db = connexionDB();
 require_once 'components/RenderExpense.php';
-
-var_dump($_SESSION);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,11 +14,12 @@ var_dump($_SESSION);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= CSS_DIR; ?>theme.css<?php echo '?v=' . filemtime(CSS_DIR . 'theme.css'); ?>">
     <title>Projet AFEC</title>
-    <script type="module" src="../assets/scripts/_FonctionCreateElement.js"></script>
+    <script type="module" defer src="<?= JS_DIR; ?>manageExpenses.js<?php echo '?v=' . filemtime(JS_DIR . 'manageExpenses.js'); ?>"></script>
 </head>
 
-<body>
+<body >
     <header class="header">
+
         <div class="container-header container-logo"><img class="logo" src="../images/logo.jpg" alt="logo de l'aplication"
                 width="64" height="64"></div>
         <div class="container-header container-photo-profil">
@@ -38,19 +32,15 @@ var_dump($_SESSION);
             <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
         </svg>
         <h1 class="text-center">Mes dernières dépenses</h1>
-        <!-- <span></span> -->
         <hr>
     </nav>
-    <main>
-        <h2>6</h2>
+    <main id="main">
         <?php
 
-        echo $_SESSION['id'];
         getExpense($db, $_SESSION['id']);
         ?>
     </main>
     <footer>
-
     </footer>
 </body>
 

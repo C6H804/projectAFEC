@@ -60,3 +60,15 @@
     }
   }
 }
+
+.fleche {
+  width: 48px;
+  height: 48px;
+  transition-duration: 0.3s;
+  &-on {
+    scale: -1 ;
+    }
+  &-off {
+    scale: 1;
+  }
+}

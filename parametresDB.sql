@@ -4,6 +4,12 @@ CREATE table IF NOT EXISTS userImage (
 );
 INSERT INTO userImage (chemin) VALUES ('images/pofileImage/default.jpg');
 
+CREATE TABLE IF NOT EXISTS productImage (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    textAlternatif VARCHAR(100),
+    chemin VARCHAR(255) NOT NULL
+);
+INSERT INTO productImage (textAlternatif, chemin) VALUES ('image de sachet de pates', 'images/productImage/pates.jpg');
 
 
 CREATE TABLE IF NOT EXISTS user (
@@ -18,16 +24,6 @@ CREATE TABLE IF NOT EXISTS user (
     dateLastConnexion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     dateLastEdit TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-
-
-CREATE TABLE IF NOT EXISTS productImage (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    textAlternatif VARCHAR(100),
-    chemin VARCHAR(255) NOT NULL
-);
-INSERT INTO productImage (textAlternatif, chemin) VALUES ('image de sachet de pates', 'images/productImage/pates.jpg');
-
-
 
 
 CREATE TABLE IF NOT EXISTS expense (
@@ -54,10 +50,6 @@ CREATE TABLE IF NOT EXISTS product (
     FOREIGN KEY (idDepense) REFERENCES expense(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (idImageProduct) REFERENCES productImage(id) ON DELETE SET NULL ON UPDATE CASCADE
 );
-
-
-
-
 
 
 -- remplissage de la table user
